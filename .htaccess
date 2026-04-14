@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# if real file or folder exists, open normally
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# send short slugs to index.php
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ index.php [L,QSA]

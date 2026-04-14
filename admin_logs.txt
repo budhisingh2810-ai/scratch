@@ -1,0 +1,145 @@
+05 Mar 2026 19:41:23 | gajju | Folder: Hindi | UPI: paytm.s20lo26@pty | Amount: 1491
+05 Mar 2026 19:41:40 | gajju | Folder: Hindi | UPI: paytm.s20lo26@pty | Amount: 1482
+05 Mar 2026 19:41:52 | gajju | Folder: Hindi | UPI: paytm.s20lo26@pty | Amount: 1488
+05 Mar 2026 19:46:37 | gajju | Folder: Telugu | UPI: paytm.s20lo26@pty | Amount: 1488
+05 Mar 2026 19:47:53 | gajju | Telugu | paytm.s20lo26@pty | 1488
+05 Mar 2026 21:07:01 | gajju | Hindi | paytm.s20us9h@pty | 1491
+05 Mar 2026 21:08:25 | gajju | Tamil | paytm.s20us9h@pty | 1491
+07 Mar 2026 00:37:09 | gajju | Tamil | Paytm.s1x4kds@pty | 1491
+07 Mar 2026 00:37:42 | gajju | Kannada | Paytm.s1x4kds@pty | 1493
+07 Mar 2026 00:38:05 | gajju | Kannda | Paytm.s1x4kds@pty | 1498
+07 Mar 2026 00:45:49 | gajju | Tamil | paytm.s1x4kds@pty | 1491
+07 Mar 2026 00:46:00 | gajju | Kannada | paytm.s1x4kds@pty | 1493
+07 Mar 2026 00:46:12 | gajju | Kannda | paytm.s1x4kds@pty | 1498
+07 Mar 2026 00:53:17 | gajju | Tamil | paytm.s1xkame@pty | 1491
+07 Mar 2026 00:53:27 | gajju | Kannada | paytm.s1xkame@pty | 1493
+07 Mar 2026 00:53:36 | gajju | Kannda | paytm.s1xkame@pty | 1498
+08 Mar 2026 00:30:40 | gajju | Kannda | paytm.s1xkame@pty | 4400
+09 Mar 2026 12:40:46 | gajju | Tamil | paytm.s22rxvl@pty | 1491
+09 Mar 2026 22:16:40 | gajju | Kannada | paytm.s22rxvl@pty | 1498
+10 Mar 2026 01:05:57 | gajju | Tamil | paytm.s20lnsg@pty | 1491
+10 Mar 2026 01:06:09 | gajju | Kannada | paytm.s20lnsg@pty | 1498
+10 Mar 2026 15:07:20 | gajju | Tamil | paytm.s228ezj@pty | 1491
+10 Mar 2026 15:07:36 | gajju | Kannada | paytm.s228ezj@pty | 1498
+10 Mar 2026 22:24:34 | gajju | Tamil | paytm.s228ezd@pty | 1491
+10 Mar 2026 22:24:49 | gajju | Kannada | paytm.s228ezd@pty | 1498
+11 Mar 2026 07:57:15 | gajju | Tamil | paytm.s228ezj@pty | 1491
+11 Mar 2026 07:57:28 | gajju | Kannada | paytm.s228ezj@pty | 1498
+11 Mar 2026 12:16:56 | gajju | Tamil | paytm.s228ezd@pty | 1491
+11 Mar 2026 12:17:08 | gajju | Kannada | paytm.s228ezd@pty | 1498
+11 Mar 2026 15:12:38 | gajju | Tamil | paytm.s228ezj@pty | 1491
+11 Mar 2026 15:16:12 | gajju | Tamil | paytm.s228vmz@pty | 1491
+12 Mar 2026 13:04:57 | gajju | Hindi | paytm.s228ezd@pty | 1491
+12 Mar 2026 13:07:45 | gajju | Tamil | paytm.s228ezd@pty | 1491
+12 Mar 2026 13:18:58 | gajju | Tamil | paytm.s23p98u@pty | 1491
+12 Mar 2026 17:18:15 | gajju | Tamil | paytm.s20mkb3@pty | 1491
+12 Mar 2026 17:18:23 | gajju | Kannada | paytm.s20mkb3@pty | 1491
+12 Mar 2026 17:18:31 | gajju | Kannada | paytm.s20mkb3@pty | 1492
+12 Mar 2026 21:38:00 | gajju | Tamil | paytm.s21fy3l@pty | 1491
+13 Mar 2026 00:34:30 | gajju | Hindi | paytm.s20mkb3@pty | 1491
+13 Mar 2026 00:35:05 | gajju | Tamil | paytm.s20mkb3@pty | 1491
+13 Mar 2026 00:35:25 | gajju | Kannada | paytm.s20mkb3@pty | 1492
+13 Mar 2026 09:01:48 | gajju | Tamil | paytm.s228ezd@pty | 1491
+13 Mar 2026 09:01:59 | gajju | Kannada | paytm.s228ezd@pty | 1492
+14 Mar 2026 10:10:25 | gajju | Hindi | paytm.s2297n9@pty | 1491
+14 Mar 2026 10:12:49 | gajju | Tamil | paytm.s22nlfx@pty | 1491
+14 Mar 2026 23:23:01 | gajju | Tamil | paytm.s2297n@pty | 1491
+14 Mar 2026 23:24:19 | gajju | Hindi | paytm.s2297n9@pty | 1491
+14 Mar 2026 23:24:51 | gajju | Tamil | paytm.s2297n9@pty | 1491
+14 Mar 2026 23:32:10 | gajju | Tamil | paytm.s23ja2d@pty | 1491
+15 Mar 2026 00:19:44 | gajju | Tamil | paytm.s1y3wu7@pty | 1491
+15 Mar 2026 00:32:30 | gajju | Tamil | paytm.s1y48u7@pty | 1491
+15 Mar 2026 00:40:44 | gajju | Tamil | paytm.s23ja2d@pty | 1491
+15 Mar 2026 00:42:31 | gajju | Tamil | paytm.s1wqvpp@pty | 1491
+15 Mar 2026 02:17:24 | gajju | Tamil | paytm.s23ja2d@pty | 1491
+15 Mar 2026 09:33:12 | gajju | Hindi | paytm.s1wqvpp@pty | 1491
+15 Mar 2026 09:35:23 | gajju | Tamil | paytm.s1wqvpp@pty | 1491
+15 Mar 2026 11:21:11 | gajju | Telugu | paytm.s1wqvpp@pty | 1492
+15 Mar 2026 18:20:22 | gajju | Hindi | paytm.s1wqvpp@pty | 1493
+16 Mar 2026 11:57:53 | gajju | Tamil | paytm.s21tsq8@pty | 1491
+16 Mar 2026 11:58:17 | gajju | Telugu | paytm.s21tsq8@pty | 1492
+16 Mar 2026 21:10:07 | gajju | Tamil | paytm.s23p8zp@pty | 1491
+16 Mar 2026 21:10:17 | gajju | Telugu | paytm.s23p8zp@pty | 1492
+17 Mar 2026 07:34:49 | gajju | Hindi | paytm.s1wqz9y@pty | 1491
+17 Mar 2026 07:35:03 | gajju | Tamil | paytm.s1wqz9y@pty | 1491
+17 Mar 2026 07:35:17 | gajju | Telugu | paytm.s1wqz9y@pty | 1492
+17 Mar 2026 08:13:55 | gajju | Tamil | paytm.s21tsq8@pty | 1491
+17 Mar 2026 08:14:05 | gajju | Telugu | paytm.s21tsq8@pty | 1492
+17 Mar 2026 12:28:45 | gajju | Tamil | paytm.s20pef7@pty | 1491
+17 Mar 2026 12:29:02 | gajju | Telugu | paytm.s20pef7@pty | 1492
+18 Mar 2026 08:03:15 | gajju | Hindi | paytm.s21fy3l@pty | 1491
+18 Mar 2026 12:06:57 | gajju | Telugu | paytm.s22nzti@pty | 1492
+18 Mar 2026 12:07:19 | gajju | Tamil | paytm.s22nzti@pty | 1491
+21 Mar 2026 00:16:16 | gajju | Hindi | paytm.s22nlh4@pty | 1491
+21 Mar 2026 00:16:25 | gajju | Tamil | paytm.s22nlh4@pty | 1491
+21 Mar 2026 00:16:34 | gajju | Telugu | paytm.s22nlh4@pty | 1492
+21 Mar 2026 00:17:21 | gajju | Kannada | paytm.s22nlh4@pty | 1492
+22 Mar 2026 02:07:36 | gajju | Bang | paytm.s22nlh4@pty | 1493
+22 Mar 2026 11:01:15 | gajju | Bang | paytm.s21n6s7@pty | 1493
+22 Mar 2026 11:01:28 | gajju | Bang | paytm.s21n6s7@pty | 1493
+22 Mar 2026 11:01:48 | gajju | Tamil | paytm.s21n6s7@pty | 1491
+22 Mar 2026 16:12:22 | gajju | Bang | paytm.s21mv3u@pty | 1493
+22 Mar 2026 16:12:24 | gajju | Bang | paytm.s21mv3u@pty | 1493
+22 Mar 2026 16:12:45 | gajju | Tamil | paytm.s21mv3u@pty | 1491
+23 Mar 2026 02:02:38 | gajju | Bang | paytm.s23ak92@pty | 1493
+23 Mar 2026 02:02:48 | gajju | Tamil | paytm.s23ak92@pty | 1491
+23 Mar 2026 02:03:00 | gajju | Odia | paytm.s23ak92@pty | 1490
+23 Mar 2026 17:33:04 | gajju | Bang | paytm.s23ak92@pty | 499
+23 Mar 2026 22:51:31 | gajju | Bang | paytm.s23ak92@pty | 1493
+23 Mar 23:17 | gajju | Bang | paytm.s23ak92@pty → paytm.s23ak92@pty | 489 → 490
+23/03 23:24 | gajju | Bang | UPDATED
+23/03 23:24 | gajju | Bang | UPDATED
+23/03 23:25 | gajju | Tamil | UPDATED
+23/03 23:25 | gajju | Tamil | UPDATED
+23/03 23:25 | gajju | Tamil | UPDATED
+23/03 23:43 | gajju | Bang | UPDATED
+23/03 23:44 | gajju | Bang | UPDATED
+23/03 23:44 | gajju | Bang | UPDATED
+23/03 23:47 | gajju | ALL | SYNCED
+24/03 01:30 | gajju | Bang | UPDATED
+24/03 01:30 | gajju | ALL | SYNCED
+25/03 02:53 | gajju | Bang | UPDATED
+25/03 02:53 | gajju | ALL | SYNCED
+25/03 02:53 | gajju | Bang | UPDATED
+25/03 02:54 | gajju | Bang | UPDATED
+25/03 02:54 | gajju | ALL | SYNCED
+25/03 02:54 | gajju | Odia | UPDATED
+25/03 10:47 | gajju | Odia | UPDATED
+25/03 12:02 | gajju | Odia | UPDATED
+25/03 12:13 | gajju | Bang | UPDATED
+25/03 12:13 | gajju | ALL | SYNCED
+25/03 13:11 | gajju | Bang | UPDATED
+25/03 13:11 | gajju | ALL | SYNCED
+25/03 14:48 | gajju | Odia | UPDATED
+25/03 18:21 | gajju | Odia | UPDATED
+25/03 18:22 | gajju | Odia | UPDATED
+26/03 02:07 | gajju | Mal | UPDATED
+27/03 02:48 | gajju | Bang | UPDATED
+27/03 02:48 | gajju | ALL | SYNCED
+29/03 03:00 | gajju | Hindi | UPDATED
+29/03 03:01 | gajju | Bang | UPDATED
+29/03 03:02 | gajju | Hindi | UPDATED
+29/03 03:06 | gajju | Hindi | UPDATED
+29/03 03:06 | gajju | Hindi | UPDATED
+29/03 03:06 | gajju | Hindi | UPDATED
+29/03 03:08 | gajju | Mal | UPDATED
+29/03 03:09 | gajju | Mal | UPDATED
+29/03 03:10 | gajju | Odia | UPDATED
+29/03 03:11 | gajju | Tamil | UPDATED
+29/03 03:13 | gajju | Telugu | UPDATED
+29/03 03:14 | gajju | Telugu | UPDATED
+29/03 03:20 | gajju | Odia | UPDATED
+29/03 03:38 | gajju | ALL | SYNCED
+29/03 03:38 | gajju | Mal | UPDATED
+29/03 03:38 | gajju | Bang | UPDATED
+29/03 03:38 | gajju | Odia | UPDATED
+29/03 03:42 | gajju | Mal | UPDATED
+29/03 03:42 | gajju | Mal | UPDATED
+29/03 03:43 | gajju | Mal | UPDATED
+29/03 03:44 | gajju | Mal | UPDATED
+29/03 03:45 | gajju | Mal | UPDATED
+29/03 03:48 | gajju | Mal | UPDATED
+29/03 03:48 | gajju | Mal | UPDATED
+29/03 03:48 | gajju | ALL | SYNCED
+29/03 03:49 | gajju | Odia | UPDATED
+29/03 03:49 | gajju | Bang | UPDATED

