@@ -16,8 +16,8 @@
     <title>Festive Bonus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="preload" href="scratch-overlay.png" as="image">
-    <link rel="preload" href="reward-image.png" as="image">
+    <link rel="preload" href="https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/scratch-overlay.png" as="image">
+    <link rel="preload" href="https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/reward-image.png" as="image">
     
     <link rel="stylesheet" href="img/style.css">
 
@@ -282,7 +282,7 @@
 
     <a class="pay-link" href="#">
         <div class="top-banner-wrapper">
-            <img src="https://gateway.in-maa-1.linodeobjects.com/Malyalam/Maltop.png" width="100%" height="auto">
+            <img src="https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/img/Top.png" width="100%" height="auto">
             <div class="timer-overlay" id="timerDisplay">
                 <span class="timer-icon">⏱</span>
                 <span id="timerMinutes">04</span>:<span id="timerSeconds">59</span>
@@ -302,14 +302,14 @@
         <div class="confetti"></div>
         <div class="confetti"></div>
 
-        <img src="https://gateway.in-maa-1.linodeobjects.com/Malyalam/malreward.png" class="reveal-image" id="reveal-img">
+        <img src="https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/reward-image.png" class="reveal-image" id="reveal-img">
         <div class="amount-overlay" id="rewardAmount">₹1497</div>
         <canvas id="js-canvas"></canvas>
     </div>
 
     <a class="pay-link" href="#">
         <div>
-            <img src="https://gateway.in-maa-1.linodeobjects.com/Malyalam/malabot.png" width="100%" height="auto">
+            <img src="https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/img/Bot.png" width="100%" height="auto">
         </div>
     </a>
 
@@ -406,7 +406,7 @@
             var canvasWidth, canvasHeight;
 
             overlayImage.crossOrigin = "anonymous";
-            overlayImage.src = "scratch-overlay.png";
+            overlayImage.src = "https://s3.ap-south-1.amazonaws.com/bjp.mudra/Mal/scratch-overlay.png";
 
             overlayImage.onload = function() {
                 canvasWidth = overlayImage.width;
